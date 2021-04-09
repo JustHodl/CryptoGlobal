@@ -1,5 +1,6 @@
 # LAP
-Blockchain based on SHA-3
+
+Looking Adds Paiement extension for browser
 
 
 ALPHA VERSION, NOT DEFINITIVE !
