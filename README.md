@@ -1,6 +1,5 @@
-# LAP
+# CryptoGlobal
 
-Looking Adds Paiement extension for browser
+A modern blockchain in bash
 
-
-ALPHA VERSION, NOT DEFINITIVE !
+Dev in progress
