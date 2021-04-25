@@ -194,16 +194,35 @@ public class Blockchain {
 			    
 			    // Loop second block mining
 			    
-			    while (hashFirstBlockTab[0] != '0' ) {
+			    while (hashFirstBlockTab[0] != '0') {
 			    	
 			    	try {
 						digest = MessageDigest.getInstance("SHA-256");
 						hashFirstBlockTab = digest.digest(hashFirstBlock.getBytes(Charset.forName("UTF-8")));
-						hashFirstBlock = hashFirstBlock+1;
+						
 						System.out.println(hashFirstBlock);
 						System.out.println(hashFirstBlockTab);
 						
 						Path chemin = Paths.get("block2HASH.hex");
+						
+						
+						// Increase difficulty by adding a zero at position 4 (hex)
+						
+						if (hashFirstBlockTab[1] != '0') {
+							while (hashFirstBlockTab[1] != '0') {
+								digest = MessageDigest.getInstance("SHA-256");
+								hashFirstBlockTab = digest.digest(hashFirstBlock.getBytes(Charset.forName("UTF-8")));
+								
+								hashFirstBlock = hashFirstBlock+1;
+								
+							}
+							
+								
+						}
+						
+						
+						
+						
 				        
 						 
 				        
@@ -212,7 +231,7 @@ public class Blockchain {
 				            // Un objet BufferedOutputStream est affecté à la référence OutputStream.
 				            output = new BufferedOutputStream(Files.newOutputStream(chemin));
 				            // Ecrire dans le fichier
-				            output.write(Originhash);
+				            output.write(hashFirstBlockTab);
 				 
 				            // vider le tampon
 				            output.flush();
