@@ -6,6 +6,8 @@ import java.io.IOException;
 import javax.swing.*;
 
 public class Start {
+	
+	private static final double VERSION = 0.1;
 
 	public static void main(String[] args) throws IOException  {
 	

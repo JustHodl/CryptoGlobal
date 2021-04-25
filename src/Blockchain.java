@@ -176,6 +176,9 @@ public class Blockchain {
 	}
 	
 	int setMining(int methodDIFFICULTY) throws IOException {
+		
+		// PROOF OF WORK
+		
 		int standardBlockDifficulty;
 		standardBlockDifficulty = DIFFICULTY;
 		System.out.println(standardBlockDifficulty);
@@ -194,6 +197,23 @@ public class Blockchain {
 			    
 			    // Loop second block mining
 			    
+			    // Block hash salt
+			    char random_char;
+			    int random_int = (int)Math.floor(Math.random()*(9-0+1)+0);
+			    if (random_int > 5 ) {
+			    	random_char = '0';
+			    }
+			   
+			    
+			    else {
+			    	random_char = '1';
+			    }
+			    
+			    System.out.println(random_char);
+			    
+			    //////////////////////////////////
+			    
+			    
 			    while (hashFirstBlockTab[0] != '0') {
 			    	
 			    	try {
@@ -202,14 +222,15 @@ public class Blockchain {
 						
 						System.out.println(hashFirstBlock);
 						System.out.println(hashFirstBlockTab);
+						System.out.println(random_int);
 						
 						Path chemin = Paths.get("block2HASH.hex");
 						
 						
 						// Increase difficulty by adding a zero at position 4 (hex)
 						
-						if (hashFirstBlockTab[1] != '0') {
-							while (hashFirstBlockTab[1] != '0') {
+						if (hashFirstBlockTab[1] != random_char) {
+							while (hashFirstBlockTab[1] != random_char) {
 								digest = MessageDigest.getInstance("SHA-256");
 								hashFirstBlockTab = digest.digest(hashFirstBlock.getBytes(Charset.forName("UTF-8")));
 								
@@ -219,6 +240,8 @@ public class Blockchain {
 							
 								
 						}
+						
+						
 						
 						
 						
